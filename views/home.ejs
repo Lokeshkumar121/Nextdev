@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextGen Developers</title>
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    *::selection {
+      background-color: rgb(205, 205, 196);
+      color: rgb(255, 251, 251);
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #fff;
+      color: #1c1c1c;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #f9f9f9;
+      padding: 30px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #1e88e5;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(to right, #e3f2fd, #fff);
+    }
+
+    .hero h1 {
+      font-size: 55px;
+      font-weight: 600;
+    }
+
+    .hero p {
+      font-size: 23px;
+      color: #555;
+      margin-top: 20px;
+    }
+
+    .hero button {
+      margin-top: 30px;
+      padding: 14px 32px;
+      font-size: 18px;
+      background-color: #1e88e5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .hero button:hover {
+      background-color: #1565c0;
+    }
+
+    .section {
+      padding: 70px 30px;
+
+      margin: auto;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 40px;
+      margin-bottom: 28px;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #f4f4f4;
+      padding: 40px;
+      border-radius: 12px;
+      width: 300px;
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      background: #e0f7fa;
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background: #1c1c1c;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    footer a {
+      color: #90caf9;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .card {
+        width: 100%;
+      }
+    }
+
+    .course-section {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 50px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .course-section h2 {
+      color: #2c3e50;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .course-section p {
+      font-size: 1.4rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      background: #dff0ff;
+      padding: 5px 10px;
+      border-radius: 6px;
+      color: #0056b3;
+      font-weight: bold;
+    }
+
+    .course-section strong {
+      color: #1e88e5;
+    }
+
+    @media (max-width: 768px) {
+      .course-section {
+        padding: 20px;
+        margin: 20px;
+      }
+
+      .course-section h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .std-img {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      margin: 20px;
+
+    }
+
+    .cards .card {
+      font-size: 20px;
+      padding: 20px;
+    }
+
+    .admin-login-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white !important;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .admin-login-btn:hover {
+      background-color: #555;
+    }
+
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-float img {
+      width: 40px;
+      height: 40px;
+      margin: 10px;
+    }
+
+    /* Hide hamburger on desktop */
+    .hamburger {
+      display: none;
+      font-size: 32px;
+      cursor: pointer;
+    }
+
+    .mobile-nav {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      right: 0;
+      background-color: #fff;
+      border-top: 1px solid #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      gap: 18px;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav a {
+      color: #333;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .admin-login-btn a {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      nav.desktop-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    .faculty-section {
+      padding: 60px 20px;
+      background-color: #f7f9fc;
+      text-align: center;
+    }
+
+    .faculty-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #222;
+    }
+
+    .faculty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .faculty-card {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 25px 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .faculty-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .faculty-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #4b7bec;
+    }
+
+    .faculty-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .faculty-card .title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #4b7bec;
+      margin-bottom: 10px;
+    }
+
+    .faculty-card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      z-index: 999;
+      animation: floatUpDown 1s infinite ease-in-out;
+    }
+
+    .whatsapp-float img {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.3s;
+    }
+
+    @keyframes floatUpDown {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 2px solid;
+      border-radius: 10px;
+    }
+
+    .section1 {
+      background: linear-gradient(to bottom, #f3f4f6, #ffffff, #f3f4f6);
+      padding: 60px 20px;
+    }
+
+    .cardss {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card1 {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 18px;
+      padding: 40px 20px;
+      text-align: center;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1f2937;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(12px) saturate(160%);
+    }
+
+    .card1:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .enroll-btn {
+      background: linear-gradient(90deg, #4f46e5, #7c3aed);
+      color: #fff;
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .enroll-btn:hover {
+      transform: scale(1.07);
+      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.45);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">NextGenDev</div>
+    <nav class="desktop-nav">
+      <a href="#course-info">Courses</a>
+      <a href="#placements">Placements</a>
+      <a href="./about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/admin/login" class="admin-login-btn">Admin Login</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      ☰
+    </div>
+  </header>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-nav hidden">
+    <a href="#course-info" onclick="toggleMenu()">Courses</a>
+    <a href="#placements" onclick="toggleMenu()">Placements</a>
+    <a href="./about" onclick="toggleMenu()">About</a>
+    <a href="/contact" onclick="toggleMenu()">Contact</a>
+    <a href="/admin/login" class="admin-login-btn" onclick="toggleMenu()">Admin Login</a>
+  </div>
+
+  <section class="hero">
+    <h1>Become a Full Stack Developer</h1>
+    <p>Master MERN & Java Backend with real projects and job placement support.</p>
+    <button><a href="./course" style="text-decoration: none; color: white;">Join Now</a></button>
+  </section>
+
+  <section class="section">
+    <h2>What You'll Learn</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Java Backend</h3>
+        <p>Spring Boot, Hibernate, Core Java, REST APIs, and DSA with projects.</p>
+      </div>
+      <div class="card">
+        <h3>MERN Stack</h3>
+        <p>MongoDB, Express.js, React.js, Node.js, Hosting, Auth & more.</p>
+      </div>
+      <div class="card">
+        <h3>Career Growth</h3>
+        <p>Live Mock Interviews, Resume Building, LinkedIn Setup & Placement Help.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="cardss">
+      <a href="/webwork" style="text-decoration: none;">
+        <div class="card1">
+          <h3>Teachnical how the web works</h3>
+        </div>
+      </a>
+      <a href="/roadmap" style="text-decoration: none;">
+        <div class="card1">
+          <h3>Learn Software Engineering Roadmap</h3>
+        </div>
+      </a>
+
+      <a href="/liveeg" style="text-decoration: none;">
+        <div class="card1">
+          <h3>How Web Development Works <span style="color:#4f46e5;">(Live Example)</span></h3>
+        </div>
+      </a>
+
+      <a href="/enroll" style="text-decoration: none;">
+        <div class="card1">
+          <button class="enroll-btn">Enroll Now</button>
+        </div>
+      </a>
+
+    </div>
+  </section>
+  <section class="section" style="background: #f9f9f9;" id="placements">
+    <h2>Top Company Placements</h2>
+    <div class="cards">
+      <div class="card">
+        <h4>Rohit Sharma</h4>
+        <p>Software Engineer</p><br>
+        <img src="/images/google-1-1.svg" alt="Google" style="height: 24px;" />
+      </div>
+      <div class="card">
+        <h3>Priya Verma</h3>
+        <p>Frontend Engineer</p><br>
+        <img src="/images/logo-amazon.svg" alt="Google" style="height: 24px;" />
+      </div>
+      <div class="card">
+        <h3>Akash Mehta</h3>
+        <p>Full Stack Developer</p><br>
+        <img src="/images/microsoft-5.svg" alt="Google" style="height: 24px;" />
+      </div>
+    </div>
+  </section>
+  <section class="course-section" id="course-info">
+    <h2>📘 About the Course</h2>
+    <p>
+      This Full Stack Web Development program is designed to take you from a complete beginner to an industry-ready
+      developer.
+      You’ll master both frontend and backend technologies — including HTML, CSS, JavaScript, React, Node.js, MongoDB,
+      Java, Spring Boot, and more.
+    </p>
+    <p>
+      Whether you choose the <strong>MERN Stack</strong> or the <strong>Java Backend</strong> path, you’ll learn by
+      building real-world projects, solving Data Structures & Algorithm problems, and preparing for tech interviews at
+      top companies like Google, Amazon, Microsoft, and Meta.
+    </p>
+    <p>
+      You’ll also get access to resume-building support, mock interviews, certification, and 100% placement assistance.
+      This course is trusted by hundreds of students who have successfully launched their tech careers!
+    </p>
+  </section>
+  <section class="faculty-section">
+    <h2>👨‍🏫 Meet Our Faculty</h2>
+    <div class="faculty-grid">
+      <a href="/lokesh" style="text-decoration: none;">
+        <div class="faculty-card">
+          <img src="images/ph1.jpeg" alt="Lokesh Kumar">
+          <h3>Lokesh Kumar</h3>
+          <p class="title">Java & Spring Boot Expert & Mern Stack Developer & DSA</p>
+        </div>
+      </a>
+
+      <a href="/manish" style="text-decoration: none;">
+     <div class="faculty-card">
+      <img src="images/ph2.jpg" alt="Manish Dagar">
+      <h3>Manish Dagar</h3>
+      <p class="title">Java - Script Backend Developer</p>
+    </div>
+   </a>
+      
+    <a href="/naresh" style="text-decoration: none;">
+     <div class="faculty-card">
+      <img src="images/ph3.jpeg" alt="Naresh Kumar">
+      <h3>Naresh Kumar</h3>
+      <p class="title">Frontend Developer</p>
+    </div>
+   </a>
+
+      <a href="/network" style="text-decoration: none;">
+        <div class="faculty-card">
+          <img src="images/network.jpg" alt="Network sir ">
+          <h3>Niladhari Sekhar </h3>
+          <p class="title">Artificial Inteligence & Machine learning</p>
+        </div>
+      </a>
+  </section>
+  <section class="section" style="background: #eef7ff;">
+    <h2>🎯 Why Choose NextGen Developers?</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Expert Mentors</h3>
+        <p>Learn directly from engineers who have worked at top tech companies.</p>
+      </div>
+      <div class="card">
+        <h3>Job-Oriented Learning</h3>
+        <p>Curriculum built to help you crack interviews and get placed.</p>
+      </div>
+      <div class="card">
+        <h3>Live Projects</h3>
+        <p>Work on real-world applications and build your portfolio.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background: #fff9f0;">
+    <h2>🎓 What Our Students Say</h2>
+    <div class="cards">
+      <div class="card">
+        <p>"The projects and mock interviews helped me get placed at Amazon!"</p>
+        <strong>— Priya V., Frontend Developer</strong>
+      </div>
+      <div class="card">
+        <p>"Amazing mentorship! Cleared DSA concepts like never before."</p>
+        <strong>— Akash M., Full Stack Developer</strong>
+      </div>
+      <div class="card">
+        <p>"Best place for Java Backend & Spring Boot. Got placed at TCS."</p>
+        <strong>— Rishabh S., Java Developer</strong>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background: #f0f8ff;">
+    <h2>📚 Full Curriculum Snapshot</h2>
+    <ul style="text-align: left; max-width: 800px; margin: auto; font-size: 18px; line-height: 1.8;">
+      <li><strong>Frontend:</strong> HTML, CSS, JavaScript, React, Redux, Responsive Design</li>
+      <li><strong>Backend:</strong> Node.js, Express.js, MongoDB, MySQL, REST APIs</li>
+      <li><strong>Java Path:</strong> Core Java, JDBC, Hibernate, Spring Boot, JPA</li>
+      <li><strong>DSA:</strong> Arrays, Strings, Trees, Recursion, Dynamic Programming</li>
+      <li><strong>Tools:</strong> GitHub, VS Code, Postman, Netlify, Render</li>
+      <li><strong>AI (Artificial Intelligence)</strong>
+        <ul>
+          <li><strong>1. Machine Learning (ML)</strong> – Data se patterns seekhna aur predict karna
+            <ul>
+              <li>Supervised Learning (Regression, Classification)</li>
+              <li>Unsupervised Learning (Clustering, Dimensionality Reduction)</li>
+              <li>Reinforcement Learning (Reward-based learning)</li>
+            </ul>
+          </li>
+          <li><strong>2. Deep Learning</strong> – Artificial Neural Networks ka use
+            <ul>
+              <li>ANN – Artificial Neural Networks</li>
+              <li>CNN – Convolutional Neural Networks (Images ke liye)</li>
+              <li>RNN – Recurrent Neural Networks (Text & Sequences ke liye)</li>
+            </ul>
+          </li>
+          <li><strong>3. Computer Vision</strong> – Image/Video analysis
+            <ul>
+              <li>Image Classification</li>
+              <li>Object Detection (YOLO, SSD)</li>
+              <li>Face Recognition</li>
+            </ul>
+          </li>
+          <li><strong>4. Natural Language Processing (NLP)</strong> – Text & Language understanding
+            <ul>
+              <li>Chatbots</li>
+              <li>Sentiment Analysis</li>
+              <li>Language Translation</li>
+              <li>Speech Recognition</li>
+            </ul>
+          </li>
+          <li><strong>5. Robotics</strong> – AI se chalne wale robots</li>
+          <li><strong>6. Data Science</strong> – Data visualization aur analysis</li>
+          <li><strong>7. AI Tools & Libraries</strong>
+            <ul>
+              <li>Python, NumPy, Pandas</li>
+              <li>TensorFlow, Keras, PyTorch</li>
+              <li>Scikit-learn, OpenCV, HuggingFace</li>
+            </ul>
+          </li>
+          <li><strong>8. Projects & Applications</strong>
+            <ul>
+              <li>Recommendation System (e.g., Netflix, Amazon)</li>
+              <li>Self-driving Cars</li>
+              <li>Medical Diagnosis</li>
+              <li>Fraud Detection</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </section>
+  <section class="section" style="background: #f0fff0;">
+    <h2>📍 Our Location</h2>
+    <p>Visit us at: Kosi - Kalan, Uttar Pradesh</p>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d4568.944318639114!2d77.46443778649433!3d27.77184732053338!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1754456326997!5m2!1sen!2sin"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/916396283875" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="Chat on WhatsApp" />
+  </a>
+
+
+  <footer>
+    <p>© 2025 NextGen Developers | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+  </footer>
+</body>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("hidden");
+  }
+</script>
+
+</html>

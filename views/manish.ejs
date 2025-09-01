@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manish Dagar - Profile</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .profile-container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .profile-card {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .profile-img {
+      flex: 1 1 280px;
+      max-width: 300px;
+    }
+
+    .profile-img img {
+      width: 100%;
+      border-radius: 16px;
+      border: 4px solid #4b7bec;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .profile-content {
+      flex: 2 1 400px;
+    }
+
+    .profile-content h1 {
+      font-size: 2rem;
+      color: #2d3436;
+      margin-bottom: 10px;
+    }
+
+    .profile-content h3 {
+      color: #4b7bec;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .profile-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .skills, .achievements {
+      margin-top: 30px;
+    }
+
+    .skills ul, .achievements ul {
+      padding-left: 20px;
+      list-style: disc;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .profile-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-img, .profile-content {
+        max-width: 100%;
+      }
+    }
+    a{
+        text-decoration: none;
+        color: #4b7bec;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-card">
+      <div class="profile-img">
+        <img src="/images/ph2.jpg" alt="Lokesh Kumar">
+      </div>
+      <div class="profile-content">
+        <h1>Manish Dagar</h1>
+        <h3>Founder | Java - Script Backend Developer</h3>
+        <p>Manish Dagar is a passionate Backend developer and mentor with deep expertise in Java Script , and MERN stack technologies. With a focus on building real-world projects and preparing students for top product-based companies, Manish  has mentored hundreds of students in cracking placements at companies like Microsoft, Amazon, and Flipkart.</p>
+           <p>Specializes in building powerful backend systems with Node.js, Express, and MongoDB. Known for simplifying complex backend logic and mentoring students with real-world project experience.</p>
+        
+        <p>He is also a specialist in  Java - Script and System Design, and is known for delivering clear and practical education tailored to industry expectations.</p>
+
+        <div class="skills">
+          <h3>💻 Skills</h3>
+          <ul>
+            <li>React.js, Node.js, Express.js, MongoDB</li>
+            <li>REST APIs, Microservices, Git & GitHub</li>
+            <li>SQL, NoSQL, System Design Basics</li>
+          </ul>
+        </div>
+
+        <div class="achievements">
+          <h3>🏆 Achievements</h3>
+          <ul>
+            <li>Trained over 1000+ students in Java - script & Full-Stack Development</li>
+            <li>Designed and built 15+ live web applications</li>
+            <li>Conducted 50+ workshops and live coding sessions</li>
+            <li>Helped students land jobs in top product-based companies</li>
+          </ul>
+        </div>
+         <div>
+            <a href="" target="_blank">Linkdin - Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

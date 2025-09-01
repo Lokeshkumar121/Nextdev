@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: Nextdev
+    env: node
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: DB_CONNECT
+        value: mongodb+srv://lokeshtech3875_db_user:Or7GgKbXaLiHqcCo@cluster0.1dv4a82.mongodb.net/bookdb?retryWrites=true&w=majority&appName=Cluster0
+      - key: PORT
+        value: 10000

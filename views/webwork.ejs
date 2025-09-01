@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zero→Hero — Web Development (Apple-style)</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter font for premium look -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    html,body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    /* glass card */
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.45));
+      backdrop-filter: blur(10px) saturate(120%);
+      -webkit-backdrop-filter: blur(10px) saturate(120%);
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+    .dark .glass {
+      background: linear-gradient(180deg, rgba(20,20,22,0.6), rgba(20,20,22,0.45));
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    /* packet on path */
+    .packet {
+      width: 14px; height: 14px; border-radius: 9999px;
+      box-shadow: 0 6px 18px rgba(79,70,229,0.28);
+      background: linear-gradient(90deg, #7c3aed, #4f46e5);
+      transform: translate(-7px,-7px);
+      position: absolute; left: 0; top: 0; pointer-events: none;
+    }
+    /* subtle text gradient for headings */
+    .text-gradient {
+      background: linear-gradient(90deg,#111827,#4f46e5);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    /* smooth reveal */
+    .reveal { opacity: 0; transform: translateY(10px); transition: all .6s cubic-bezier(.2,.9,.3,1); }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+    /* toast */
+    .toast {
+      animation: slideIn .35s ease, fadeOut .35s ease 2.2s forwards;
+    }
+    @keyframes slideIn { from { transform: translateY(-12px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+    @keyframes fadeOut { to { transform: translateY(-12px); opacity: 0 } }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-white via-slate-50 to-indigo-50 text-slate-800">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/60 border-b">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="rounded-lg w-10 h-10 grid place-items-center bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-lg">ZH</div>
+        <div>
+          <div class="text-sm font-semibold">Zero→Hero</div>
+          <div class="text-xs text-slate-500">Software Engineering — Beginner Friendly</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <nav class="hidden md:flex gap-6 text-sm text-slate-600">
+          <a href="#demo" class="hover:underline">Demo</a>
+          <a href="#how" class="hover:underline">How it works</a>
+          <a href="#roadmap" class="hover:underline">Roadmap</a>
+        </nav>
+        <button id="themeToggle" aria-label="Toggle theme" class="px-4 py-2 rounded-lg bg-slate-800 text-white text-sm">Dark</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="max-w-7xl mx-auto px-6">
+    <section class="flex flex-col lg:flex-row items-center gap-12 py-16">
+      <div class="lg:w-1/2">
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+          Teach <span class="text-gradient">how the web works</span> — visually & interactively
+        </h1>
+        <p class="mt-6 text-slate-600 max-w-xl">
+          A premium, minimal demo that shows exactly how a user’s input flows from the <strong>Frontend</strong> to the <strong>Backend</strong> and is saved in the <strong>Database</strong>. Perfect for beginners and workshops.
+        </p>
+
+        <div class="mt-8 flex items-center gap-4">
+          <a href="#demo" class="inline-flex items-center gap-3 rounded-full bg-slate-900 text-white px-6 py-3 text-sm shadow-lg hover:scale-[1.02] transition">
+            ▶ Try Live Demo
+          </a>
+          <a href="#roadmap" class="text-sm text-slate-700 px-3 py-2 rounded-lg hover:bg-slate-100">See Roadmap</a>
+        </div>
+
+        <div class="mt-8 grid grid-cols-2 gap-3 max-w-sm">
+          <div class="bg-white rounded-xl p-4 shadow-sm">
+            <div class="text-sm text-slate-500">Lessons</div>
+            <div class="font-semibold">10+ Interactive</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 shadow-sm">
+            <div class="text-sm text-slate-500">Projects</div>
+            <div class="font-semibold">5 Capstones</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Illustration -->
+      <div class="lg:w-1/2">
+        <!-- Minimal illustrative SVG -->
+        <div class="relative">
+          <div class="glass rounded-3xl p-6 shadow-2xl">
+            <svg viewBox="0 0 800 400" class="w-full h-56 md:h-72">
+              <!-- soft abstract shapes -->
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1">
+                  <stop offset="0" stop-color="#eef2ff"/>
+                  <stop offset="1" stop-color="#ede9fe"/>
+                </linearGradient>
+              </defs>
+              <rect x="0" y="0" width="800" height="400" rx="20" fill="url(#g1)"></rect>
+              <!-- frontend box -->
+              <rect x="64" y="120" width="180" height="120" rx="12" fill="#fff" stroke="#eef2ff" />
+              <text x="154" y="160" font-size="18" font-weight="600" text-anchor="middle" fill="#4f46e5">Frontend</text>
+              <!-- backend box -->
+              <rect x="310" y="60" width="180" height="160" rx="12" fill="#fff" stroke="#efe8ff" />
+              <text x="400" y="120" font-size="18" font-weight="600" text-anchor="middle" fill="#7c3aed">Backend</text>
+              <!-- database -->
+              <rect x="560" y="140" width="160" height="120" rx="12" fill="#fff" stroke="#e6f7ef" />
+              <text x="640" y="180" font-size="18" font-weight="600" text-anchor="middle" fill="#059669">Database</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo (Auto) -->
+    <section id="demo" class="py-12">
+      <div class="max-w-4xl mx-auto text-center mb-8">
+        <h2 class="text-2xl font-semibold">Live Demo — Frontend → Backend → Database</h2>
+        <p class="mt-2 text-slate-500">Auto demo runs continuously. Use controls to pause, step, or change speed.</p>
+      </div>
+
+      <div class="relative bg-white rounded-3xl glass border p-8 shadow-xl">
+        <div class="grid lg:grid-cols-3 gap-6 items-center">
+          <!-- Frontend Card -->
+          <div id="card-fe" class="p-6 rounded-2xl glass border flex flex-col items-start">
+            <div class="flex items-center gap-4 w-full">
+              <div class="w-12 h-12 bg-indigo-600 text-white rounded-xl grid place-items-center text-xl shadow-md">👩‍💻</div>
+              <div>
+                <div class="text-slate-600 text-sm">Frontend</div>
+                <div class="font-semibold">User Interface</div>
+              </div>
+            </div>
+
+            <div class="mt-4 w-full">
+              <label class="text-xs text-slate-500">Name</label>
+              <input id="feName" class="mt-1 w-full rounded-md border px-3 py-2" placeholder="Auto-generated" />
+              <label class="text-xs text-slate-500 mt-3 block">Email</label>
+              <input id="feEmail" class="mt-1 w-full rounded-md border px-3 py-2" placeholder="auto@demo.com" />
+              <div class="mt-4 flex gap-2">
+                <button id="btnSend" class="px-4 py-2 rounded-md bg-indigo-600 text-white text-sm shadow-sm">Send</button>
+                <button id="btnStep" class="px-4 py-2 rounded-md border text-sm">Step</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle: Path + Packet animation -->
+          <div class="relative h-56 flex items-center justify-center">
+            <!-- SVG path connecting the three nodes -->
+            <svg id="pathSvg" viewBox="0 0 600 200" class="w-full h-full">
+              <defs>
+                <linearGradient id="lineGrad" x1="0" x2="1">
+                  <stop offset="0" stop-color="#6366f1"/>
+                  <stop offset="1" stop-color="#7c3aed"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Curved path -->
+              <path id="linkPath" d="M70 100 C 180 10, 420 10, 530 100" stroke="url(#lineGrad)" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.16"/>
+
+              <!-- moving packet (we place by JS using getPointAtLength) -->
+              <circle id="moving" r="8" fill="url(#lineGrad)" opacity="0" filter="url(#s)"></circle>
+
+              <!-- arrows along path (decorative) -->
+              <g id="arrows" opacity="0.12">
+                <!-- repeated small triangles -->
+                <polygon points="120,84 134,100 120,116" fill="#7c3aed"></polygon>
+                <polygon points="260,84 274,100 260,116" fill="#7c3aed"></polygon>
+                <polygon points="400,84 414,100 400,116" fill="#7c3aed"></polygon>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Database Card -->
+          <div id="card-db" class="p-6 rounded-2xl glass border flex flex-col items-start">
+            <div class="flex items-center gap-4 w-full">
+              <div class="w-12 h-12 bg-emerald-600 text-white rounded-xl grid place-items-center text-xl shadow-md">🗄</div>
+              <div>
+                <div class="text-slate-600 text-sm">Database</div>
+                <div class="font-semibold">Storage (In-memory)</div>
+              </div>
+            </div>
+
+            <div id="dbPanel" class="mt-4 w-full text-xs text-slate-700">
+              <div class="text-slate-400 text-xs">Latest records</div>
+              <div id="dbList" class="mt-2 max-h-36 overflow-auto space-y-2">
+                <div class="text-slate-400">— none yet —</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="mt-6 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <button id="toggleAuto" class="px-4 py-2 rounded-md bg-slate-100 text-slate-700">Pause</button>
+            <label class="text-sm text-slate-600">Speed</label>
+            <input id="speed" type="range" min="0.5" max="2.5" step="0.1" value="1" class="w-36" />
+            <span id="speedLabel" class="text-sm text-slate-600">1.0×</span>
+          </div>
+
+          <div class="text-sm text-slate-500">Simulation runs locally — no network calls</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS (Detailed, Apple style) -->
+    <section id="how" class="py-12">
+      <div class="max-w-5xl mx-auto prose prose-slate">
+        <h3 class="text-2xl font-semibold">How it works — step by step</h3>
+        <p class="text-slate-600">This demo visualizes the typical flow of a web request:</p>
+        <ol class="mt-4 space-y-4 text-slate-700">
+          <li>
+            <strong>Frontend</strong> renders a form and collects user input. It sends a JSON request to a server (HTTP POST).
+          </li>
+          <li>
+            <strong>Backend</strong> receives the request, validates the data, adds metadata (id, timestamp), and writes it to a database.
+          </li>
+          <li>
+            <strong>Database</strong> stores the record; the backend responds with success. The frontend can then show a confirmation and update the UI.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap" class="py-12">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-start">
+        <div class="prose">
+          <h3 class="text-2xl font-semibold">Beginner Roadmap</h3>
+          <p class="text-slate-600">Recommended learning path to become a web developer and backend engineer.</p>
+          <ul class="mt-3 space-y-2 text-slate-700">
+            <li><strong>Step 1:</strong> HTML, CSS, JavaScript — build static pages.</li>
+            <li><strong>Step 2:</strong> React / Frontend frameworks — interactive UI.</li>
+            <li><strong>Step 3:</strong> Node.js or Java Spring Boot — build REST APIs.</li>
+            <li><strong>Step 4:</strong> Databases — MySQL & MongoDB, design schemas.</li>
+            <li><strong>Step 5:</strong> DSA & System Design — prepare for interviews.</li>
+          </ul>
+        </div>
+
+        <div class="glass rounded-2xl p-6 border">
+          <h4 class="font-semibold">Why this demo helps</h4>
+          <p class="mt-2 text-slate-600">Beginners often miss the invisible server/database steps. This demo makes the unseen visible — helping learners connect UI actions with backend processes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-12 text-center">
+      <div class="max-w-3xl mx-auto glass rounded-3xl p-10 border shadow-xl">
+        <h3 class="text-2xl font-semibold">Start teaching the web today</h3>
+        <p class="mt-2 text-slate-600">Use this demo in your workshop, classroom, or course landing page to show beginners how web apps work — visually.</p>
+        <div class="mt-6">
+          <a href="#demo" class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-indigo-600 text-white shadow-lg">Try Live Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 text-center text-sm text-slate-500">
+      © <span id="year"></span> Zero→Hero • Built for teaching
+    </footer>
+  </main>
+
+  <!-- toast container -->
+  <div id="toast" class="fixed top-6 right-6 z-50"></div>
+
+  <!-- SCRIPT: Demo animation logic -->
+  <script>
+    // basic DOM refs
+    const moving = document.getElementById('moving');
+    const path = document.getElementById('linkPath');
+    const btnSend = document.getElementById('btnSend');
+    const btnStep = document.getElementById('btnStep');
+    const toggleAuto = document.getElementById('toggleAuto') || document.getElementById('toggleAuto');
+    const btnPause = document.getElementById('toggleAuto') || null;
+    const speedInput = document.getElementById('speed');
+    const speedLabel = document.getElementById('speedLabel');
+    const dbList = document.getElementById('dbList');
+    const feName = document.getElementById('feName');
+    const feEmail = document.getElementById('feEmail');
+    const toastRoot = document.getElementById('toast');
+    const autoToggleBtn = document.getElementById('toggleAuto');
+    const stepBtnLocal = document.getElementById('btnStep');
+    // variables
+    let auto = true;
+    let speed = parseFloat(speedInput?.value || 1);
+    let length = path.getTotalLength();
+    let idx = 0;
+    let running = true;
+    let records = [];
+
+    // helpers
+    function toast(msg) {
+      const el = document.createElement('div');
+      el.className = 'toast bg-slate-900 text-white px-4 py-2 rounded-md shadow-lg';
+      el.textContent = msg;
+      toastRoot.appendChild(el);
+      setTimeout(()=> el.remove(), 2600);
+    }
+
+    function pad(n){ return n<10? '0'+n : ''+n; }
+
+    function nowTime() {
+      const d = new Date();
+      return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    }
+
+    function addRecord(r){
+      records.unshift(r);
+      dbList.innerHTML = records.slice(0,8).map(rec=>{
+        return `<div class="flex items-center justify-between bg-white/60 dark:bg-black/10 rounded-md p-2">
+                  <div><div class="font-medium">${rec.name}</div><div class="text-xs text-slate-500">${rec.email}</div></div>
+                  <div class="text-xs text-slate-400">${rec.ts}</div>
+                </div>`;
+      }).join('');
+    }
+
+    // move the circle along the path using t in [0,1]
+    function moveAlong(t) {
+      const pt = path.getPointAtLength(t * length);
+      moving.setAttribute('cx', pt.x);
+      moving.setAttribute('cy', pt.y);
+      moving.style.opacity = 1;
+    }
+
+    // single simulated cycle: create data, animate, save
+    async function singleCycle(manual=false){
+      // produce fake or read from inputs
+      const names = ["Aarav","Diya","Riya","Vivaan","Arjun","Priya","Kabir","Neha","Ishika","Rahul"];
+      const domains = ["learn.dev","example.com","mail.com","app.io"];
+      const name = manual ? (feName.value || `Guest${Math.floor(Math.random()*999)}`) : names[Math.floor(Math.random()*names.length)];
+      const email = manual ? (feEmail.value || `${name.toLowerCase()}@${domains[Math.floor(Math.random()*domains.length)]}`) : `${name.toLowerCase()}${Math.floor(Math.random()*900)}@${domains[Math.floor(Math.random()*domains.length)]}`;
+      // show entered values briefly
+      feName.value = name; feEmail.value = email;
+
+      // highlight frontend (visual cue)
+      document.getElementById('card-fe').classList.add('ring-2','ring-indigo-300');
+      await sleep(300/speed);
+
+      // animate along path (0 -> 1)
+      const steps = Math.max(40, Math.floor(140 / speed));
+      for (let i=0;i<=steps;i++){
+        const t = i/steps;
+        moveAlong(t);
+        await sleep(8);
+      }
+
+      // backend processing cue
+      document.getElementById('card-fe').classList.remove('ring-2','ring-indigo-300');
+      document.getElementById('card-db').classList.add('ring-2','ring-emerald-300');
+      document.getElementById('card-db').classList.add('opacity-100');
+      await sleep(220/speed);
+
+      // save to "db"
+      const rec = { name, email, ts: nowTime() };
+      addRecord(rec);
+
+      // small success toast
+      toast(`Saved ${name} • ${email}`);
+      await sleep(300/speed);
+
+      // reset visuals
+      document.getElementById('card-db').classList.remove('ring-2','ring-emerald-300');
+      moving.style.opacity = 0;
+
+      // if manual, do not auto-loop step
+      if (manual) {
+        // keep fields filled so user sees
+      }
+    }
+
+    // utility sleep
+    function sleep(ms){ return new Promise(res=>setTimeout(res, ms)); }
+
+    // loop
+    (function autoplay(){
+      async function loop(){
+        while(true){
+          if (!auto) { await sleep(200); continue; }
+          await singleCycle();
+          await sleep(1200 / speed);
+        }
+      }
+      loop();
+    })();
+
+    // controls
+    document.getElementById('btnSend').addEventListener('click', ()=> singleCycle(true));
+    stepBtnLocal.addEventListener('click', ()=> singleCycle(true));
+
+    autoToggleBtn.addEventListener('click', ()=>{
+      auto = !auto;
+      autoToggleBtn.textContent = auto ? 'Pause' : 'Resume';
+      autoToggleBtn.classList.toggle('bg-slate-100', !auto);
+    });
+
+    speedInput.addEventListener('input', (e)=>{
+      speed = parseFloat(e.target.value);
+      speedLabel.textContent = speed.toFixed(1) + '×';
+    });
+
+    // theme toggle (dark/light)
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', ()=>{
+      document.documentElement.classList.toggle('dark');
+      themeToggle.textContent = document.documentElement.classList.contains('dark') ? 'Light' : 'Dark';
+    });
+
+    // show year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    function onScrollReveal(){
+      document.querySelectorAll('.reveal').forEach(r=>{
+        const rect = r.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) r.classList.add('show');
+      });
+    }
+    window.addEventListener('scroll', onScrollReveal);
+    onScrollReveal();
+
+    // ensure moving starts hidden
+    moving.style.opacity = 0;
+
+  </script>
+</body>
+</html>

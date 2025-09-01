@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Flow</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .box {
+      transition: all 0.6s ease;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(16px) saturate(180%);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.3);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .highlight {
+      background: linear-gradient(135deg, #6366f1, #7c3aed) !important;
+      color: #fff !important;
+      box-shadow: 0 0 35px rgba(99,102,241,0.9);
+      transform: scale(1.05);
+      animation: pulseGlow 1.5s infinite;
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 20px rgba(99,102,241,0.5); }
+      50% { box-shadow: 0 0 40px rgba(124,58,237,0.9); }
+      100% { box-shadow: 0 0 20px rgba(99,102,241,0.5); }
+    }
+    /* Lines */
+    .flow-line {
+      stroke: url(#grad1);
+      stroke-width: 4;
+      stroke-dasharray: 10;
+      animation: dashmove 1s linear infinite;
+    }
+    @keyframes dashmove {
+      to { stroke-dashoffset: -20; }
+    }
+    /* Packet */
+    .packet {
+      width: 14px; height: 14px;
+      background: radial-gradient(circle, #fff, #6366f1);
+      border-radius: 50%;
+      position: absolute;
+      z-index: 20;
+    }
+  </style>
+</head>
+<body class="relative bg-gradient-to-br from-indigo-100 via-white to-purple-100 min-h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
+
+  <!-- Connection Lines -->
+  <svg id="connection-line" class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#6366f1;" />
+        <stop offset="100%" style="stop-color:#7c3aed;" />
+      </linearGradient>
+    </defs>
+    <line id="line1" class="flow-line"/>
+    <line id="line2" class="flow-line"/>
+  </svg>
+
+  <!-- Heading -->
+  <h1 class="text-4xl md:text-5xl font-extrabold mb-14 text-center relative z-10">
+    🌐 Web Development Flow  
+    <span class="block text-indigo-600 mt-3">(Beginner Friendly Demo)</span>
+  </h1>
+
+  <!-- Frontend -->
+  <div id="frontend" class="box p-8 w-full max-w-sm text-center mb-14 relative z-10">
+    <h2 class="font-bold text-xl text-indigo-600">👩‍💻 Frontend (User)</h2>
+    <input id="username" type="text" placeholder="Enter Name" class="mt-4 w-full border rounded-lg px-4 py-3">
+    <input id="email" type="email" placeholder="Enter Email" class="mt-4 w-full border rounded-lg px-4 py-3">
+    <button onclick="sendData()" class="mt-5 w-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-6 py-3 rounded-xl font-semibold hover:scale-105 transition">🚀 Submit</button>
+  </div>
+
+  <!-- Flow Boxes -->
+  <div class="relative flex flex-col lg:flex-row items-center justify-center gap-20 mb-16 z-10">
+    <div id="backend" class="box p-8 w-80 text-center">
+      <h2 class="font-bold text-xl text-purple-600">⚙️ Backend (Server)</h2>
+      <p id="backend-status" class="text-sm mt-3 text-gray-700">Waiting for data...</p>
+    </div>
+    <div id="database" class="box p-8 w-80 text-center">
+      <h2 class="font-bold text-xl text-green-600">🗄 Database (Storage)</h2>
+      <p id="db-status" class="text-sm mt-3 text-gray-700">No data saved</p>
+    </div>
+  </div>
+
+  <!-- Response -->
+  <div id="response" class="mt-6 text-lg font-semibold text-green-600 hidden">✅ Data Saved Successfully!</div>
+
+  <!-- Popup Modal -->
+  <div id="popup" class="fixed inset-0 bg-black/40 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-8 rounded-2xl shadow-xl text-center w-80 animate-bounce">
+      <h2 class="text-2xl font-bold text-green-600 mb-3">✅ Success!</h2>
+      <p class="text-gray-700 mb-5">Your form has been submitted successfully.</p>
+      <button onclick="closePopup()" class="px-6 py-2 rounded-lg bg-indigo-600 text-white font-semibold hover:scale-105 transition">OK</button>
+    </div>
+  </div>
+
+  <script>
+    function updateLines() {
+      const f = document.getElementById('frontend').getBoundingClientRect();
+      const b = document.getElementById('backend').getBoundingClientRect();
+      const d = document.getElementById('database').getBoundingClientRect();
+      const offsetX = window.scrollX, offsetY = window.scrollY;
+
+      // Frontend → Backend
+      let l1 = document.getElementById('line1');
+      l1.setAttribute('x1', f.right + offsetX);
+      l1.setAttribute('y1', f.top + f.height/2 + offsetY);
+      l1.setAttribute('x2', b.left + offsetX);
+      l1.setAttribute('y2', b.top + b.height/2 + offsetY);
+
+      // Backend → Database
+      let l2 = document.getElementById('line2');
+      l2.setAttribute('x1', b.right + offsetX);
+      l2.setAttribute('y1', b.top + b.height/2 + offsetY);
+      l2.setAttribute('x2', d.left + offsetX);
+      l2.setAttribute('y2', d.top + d.height/2 + offsetY);
+    }
+
+    window.addEventListener('resize', updateLines);
+    window.addEventListener('scroll', updateLines);
+    window.addEventListener('load', updateLines);
+
+    function animatePacket(x1,y1,x2,y2,duration,callback) {
+      let packet = document.createElement('div');
+      packet.className = "packet";
+      packet.style.left = x1 + "px";
+      packet.style.top = y1 + "px";
+      document.body.appendChild(packet);
+
+      packet.animate([
+        { transform: `translate(0,0)` },
+        { transform: `translate(${x2-x1}px, ${y2-y1}px)` }
+      ], { duration: duration, fill: "forwards" });
+
+      setTimeout(()=>{ packet.remove(); if(callback) callback(); }, duration);
+    }
+
+    function sendData() {
+      let name = document.getElementById('username').value;
+      let email = document.getElementById('email').value;
+      if (!name || !email) { alert("⚠️ Please fill all fields!"); return; }
+
+      document.getElementById('response').classList.add('hidden');
+
+      let f = document.getElementById('frontend').getBoundingClientRect();
+      let b = document.getElementById('backend').getBoundingClientRect();
+      let d = document.getElementById('database').getBoundingClientRect();
+
+      // Step 1: Frontend → Backend
+      animatePacket(f.right, f.top+f.height/2, b.left, b.top+b.height/2, 2000, ()=>{
+        document.getElementById('backend').classList.add('highlight');
+        document.getElementById('backend-status').innerText = "⚡ Processing data...";
+
+        // Step 2: Backend → Database
+        animatePacket(b.right, b.top+b.height/2, d.left, d.top+d.height/2, 2000, ()=>{
+          document.getElementById('backend').classList.remove('highlight');
+          document.getElementById('database').classList.add('highlight');
+          document.getElementById('db-status').innerText = `📌 Saved: ${name}, ${email}`;
+
+          // Step 3: Show response + popup
+          setTimeout(()=>{
+            document.getElementById('database').classList.remove('highlight');
+            document.getElementById('response').classList.remove('hidden');
+            document.getElementById('popup').classList.remove('hidden');
+          },1000);
+        });
+      });
+    }
+
+    function closePopup() {
+      document.getElementById('popup').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

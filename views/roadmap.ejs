@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Engineering for Beginners</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    body { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 via-white to-violet-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 backdrop-blur bg-white/80 shadow">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-3 px-6">
+      <h1 class="font-bold text-xl text-indigo-700">Zero→Hero: Software Engineering</h1>
+      <div class="hidden md:flex gap-6 text-sm">
+        <a href="#subjects" class="hover:text-indigo-600">Subjects</a>
+        <a href="#webdev" class="hover:text-indigo-600">Web Development</a>
+        <a href="#roadmap" class="hover:text-indigo-600">Roadmap</a>
+        <a href="#important" class="hover:text-indigo-600">Important</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="text-center py-16 px-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+    <h2 class="text-4xl md:text-5xl font-extrabold">Learn Software Engineering from Scratch</h2>
+    <p class="mt-4 text-lg">Complete guide for beginners to understand subjects, web development, Java, DSA, and more!</p>
+    <!-- <a href="#subjects" class="mt-6 inline-block bg-white text-indigo-700 font-semibold px-6 py-3 rounded-xl shadow hover:scale-105 transition">Start Learning →</a> -->
+  </section>
+
+  <!-- Subjects Section -->
+  <section id="subjects" class="max-w-6xl mx-auto py-16 px-6">
+    <h3 class="text-3xl font-bold text-center mb-10">📘 Software Engineering Subjects</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+        <h4 class="font-semibold text-indigo-700">Programming Languages</h4>
+        <p class="text-sm mt-2">C, C++, Java, Python – basics to advanced.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg">
+        <h4 class="font-semibold text-indigo-700">Data Structures & Algorithms</h4>
+        <p class="text-sm mt-2">Arrays, Strings, Linked List, Trees, Graphs, DP.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg">
+        <h4 class="font-semibold text-indigo-700">DBMS</h4>
+        <p class="text-sm mt-2">SQL & NoSQL concepts, database design.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg">
+        <h4 class="font-semibold text-indigo-700">Operating Systems</h4>
+        <p class="text-sm mt-2">Processes, scheduling, memory management.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg">
+        <h4 class="font-semibold text-indigo-700">Computer Networks</h4>
+        <p class="text-sm mt-2">Internet, TCP/IP, HTTP, protocols.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg">
+        <h4 class="font-semibold text-indigo-700">Software Engineering</h4>
+        <p class="text-sm mt-2">SDLC, Agile, Testing, project lifecycle.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Web Development Section -->
+  <section id="webdev" class="bg-indigo-50 py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h3 class="text-3xl font-bold text-center mb-10">🌐 Web Development Breakdown</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-md">
+          <h4 class="font-semibold text-indigo-700">Frontend</h4>
+          <p class="text-sm mt-2">HTML, CSS, JavaScript, React.js, Tailwind CSS.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-md">
+          <h4 class="font-semibold text-indigo-700">Backend</h4>
+          <p class="text-sm mt-2">Node.js, Express, Java (Spring Boot), REST APIs.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-md">
+          <h4 class="font-semibold text-indigo-700">Database</h4>
+          <p class="text-sm mt-2">MySQL (SQL), MongoDB (NoSQL).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <section id="roadmap" class="max-w-6xl mx-auto py-16 px-6">
+    <h3 class="text-3xl font-bold text-center mb-10">🛣️ Beginner Roadmap</h3>
+    <pre class="bg-gray-900 text-green-400 text-sm p-6 rounded-xl overflow-x-auto">
+Software Engineering
+│
+├── Core CS Subjects
+│   ├── Programming (C, C++, Java, Python)
+│   ├── DSA (Arrays, Strings, Graphs, DP)
+│   ├── DBMS (SQL, MongoDB)
+│   ├── OS (Processes, Memory)
+│   ├── CN (Networks, Protocols)
+│   └── Software Engineering (SDLC, Agile)
+│
+├── Web Development
+│   ├── Frontend → HTML, CSS, JS, React
+│   ├── Backend → Node.js, Spring Boot
+│   └── Database → MySQL, MongoDB
+│
+└── Advanced
+    ├── Cloud & DevOps
+    ├── Git, GitHub
+    └── Deployment (AWS, Vercel, Netlify)
+    </pre>
+  </section>
+
+  <!-- Important Section -->
+  <section id="important" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-6">🔥 Most Important for Beginners</h3>
+      <ul class="space-y-3 text-lg">
+        <li>✔ DSA (must for placements/interviews)</li>
+        <li>✔ Web Development (for real projects)</li>
+        <li>✔ Java Backend (Spring Boot)</li>
+        <li>✔ Core CS Subjects (OS, DBMS, CN)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-sm text-gray-600 border-t mt-12">
+    © 2025 Zero→Hero. All rights reserved.
+  </footer>
+
+  <script>
+    ScrollReveal().reveal('section', { delay: 200, distance: '50px', origin: 'bottom', interval: 100 });
+  </script>
+
+</body>
+</html>

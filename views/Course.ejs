@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Stack Developer Course | MERN & Java</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: #111;
+      background-color: #fff;
+    }
+    header {
+      background-color: #000;
+      color: #fff;
+      padding: 3rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3.1rem;
+    }
+    header p {
+      margin: 1rem 0;
+      font-size: 1.5rem;
+    }
+    .cta-buttons a {
+      margin: 4rem;
+      padding: 1rem 1.8rem;
+      background-color: #00bcd4;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.3rem;
+    }
+    section {
+      padding: 5rem 4rem;
+      
+      margin: auto;
+    }
+    h2 {
+      color: #111;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .features, .projects, .students, .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      padding: 2rem;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    .cta-buttons{
+       margin: 20px;
+       padding: 20px 20px;
+    }
+    .card img{
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .card-std {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.3rem;
+      background: #f4f4f4;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .card-std img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
+    p{
+        font-size: 1.2rem;
+    }
+    .cta-buttons{
+        margin: 0;
+    }
+    @media (max-width:650px) {
+          .cta-buttons a{
+        margin: 0;
+        padding: 1rem 0.2rem;
+        font-size: 1rem;
+    }
+     /* Mobile-specific tweaks */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2rem;
+    }
+
+    header p {
+      font-size: 1rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-buttons a {
+      width: 90%;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    .card-std img {
+      max-width: 60px;
+      max-height: 60px;
+    }
+}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Become a Full Stack Developer</h1>
+    <p>Master MERN Stack or Java Backend. Get Placed at Google, Microsoft, Amazon & more.</p>
+    <div class="cta-buttons">
+      <a href="#">Join Now</a>
+      <a href="#">Download Brochure</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>📘 Course Overview</h2>
+    <p>Learn MERN Stack or Java Backend Development from scratch. Real-world projects, 1-on-1 mentorship, DSA, and full placement support included.</p>
+  </section>
+
+  <section>
+    <h2>📚 What You'll Learn</h2>
+    <div class="features">
+      <div class="card">
+        <h3>MERN Stack</h3>
+        <p>HTML, CSS, JavaScript, React, Node.js, Express, MongoDB</p>
+      </div>
+      <div class="card">
+        <h3>Java Backend</h3>
+        <p>Java, OOPs, JDBC, Spring Boot, Hibernate, MySQL, REST APIs</p>
+      </div>
+      <div class="card">
+        <h3>Extras</h3>
+        <p>Git, GitHub, DSA, System Design, Mock Interviews</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>💼 Real Projects</h2>
+    <div class="projects">
+      <div class="card">E-commerce Website</div>
+      <div class="card">Portfolio with React</div>
+      <div class="card">RESTful API Blog</div>
+      <div class="card">Admin Dashboard</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🎓 Student Placements Dream Campanies</h2>
+    <div class="students">
+      <div class="card-std"><img src="/images/logo-amazon.svg" alt=""></div>
+      <div class="card-std"><img src="/images/microsoft-5.svg" alt=""></div>
+      <div class="card-std"><img src="/images/meta-3.svg" alt=""></div>
+      <div class="card-std"><img src="/images/google-1-1.svg" alt=""></div>
+      <div class="card-std"> <img src="/images/facebook-5.svg" alt=""></div>
+      <div class="card-std"><img src="/images/tata-consultancy-services-1.svg" alt=""></div>
+      <div class="card-std"><img src="/images/wipro-1.svg" alt=""></div>
+      <div class="card-std"><img src="/images/accenture-2.svg" alt=""></div>
+      <div class="card-std"><img src="/images/infosys-3.svg" alt=""></div>
+      <div class="card-std"><img src="/images/cognizant-1.svg" alt=""></div>
+      <div class="card-std"><img src="/images/hlc-group.svg" alt=""></div>
+      <div class="card-std"><img src="/images/ibm.svg" alt=""></div>
+      <div class="card-std"><img src="/images/oracle-6.svg" alt=""></div>
+      <div class="card-std"><img src="/images/salesforce.svg" alt=""></div>
+      <div class="card-std"><img src="/images/adobe-44195.svg" alt=""></div>
+      <div class="card-std"><img src="/images/paytm-logo-standalone--1.svg" alt=""></div>
+      <div class="card-std"><img src="/images/zomato-2.svg" alt=""></div>
+      <div class="card-std"><img src="/images/swiggy-1.svg" alt=""></div>
+      <div class="card-std"><img src="https://w7.pngwing.com/pngs/160/304/png-transparent-flipkart-logo.png" alt=""></div>
+      <div class="card-std"><img src="/images/ola-cabs.svg" alt=""></div>
+      <div class="card-std"><img src="/images/uber-12.svg" alt=""></div>
+      <div class="card-std"><img src="https://logos-world.net/wp-content/uploads/2021/08/Byjus-Logo.png" alt=""></div>
+      <div class="card-std"><img src="/images/cree.svg" alt=""></div>
+      <div class="card-std"><img src="/images/razorpay.svg" alt=""></div>
+      <div class="card-std"><img src="/images/phonepe-1.svg" alt=""></div>
+      <div class="card-std"><img src="/images/myntra-1.svg" alt=""></div>
+      <div class="card-std"><img src="/images/snapdeal.svg" alt=""></div>
+      <div class="card-std"><img src="https://www.eklavvya.com/blog/wp-content/uploads/2022/03/Zerodha-Logo.png" alt=""></div>
+    </div>
+  </section>
+
+  <!-- <section>
+    <h2>💰 Pricing</h2>
+    <div class="pricing">
+      <div class="card">
+        <h3>Basic Plan</h3>
+        <p>Live Classes, Projects, Certificate<br> ₹14,999</p>
+      </div>
+      <div class="card">
+        <h3>Premium Plan</h3>
+        <p>Everything in Basic + 1-on-1 Mentorship, Resume & Interview Help<br> ₹24,999</p>
+      </div>
+    </div>
+  </section> -->
+
+  <footer>
+    <p>&copy; 2025 FullStackPro | Learn. Build. Get Hired.</p>
+  </footer>
+</body>
+</html>
