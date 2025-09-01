@@ -8,6 +8,6 @@ services:
     plan: free
     envVars:
       - key: DB_CONNECT
-        value: mongodb+srv://lokeshtech3875_db_user:Or7GgKbXaLiHqcCo@cluster0.1dv4a82.mongodb.net/bookdb?retryWrites=true&w=majority&appName=Cluster0
+        value: mongodb+srv://lokeshtech3875_db_user:Or7GgKbXaLiHqcCo@cluster0.1dv4a82.mongodb.net/contactFormDB?retryWrites=true&w=majority&appName=Cluster0
       - key: PORT
         value: 10000
